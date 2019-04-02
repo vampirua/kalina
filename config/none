@@ -1,0 +1,205 @@
+[232] Log opened at 2019-03-27 10:32:19
+[232] I: Checking remote connect back address.
+[232] I: Checking header 'HTTP_X_FORWARDED_FOR'.
+[232] I: Checking header 'REMOTE_ADDR'.
+[232] W: Remote address not found, connecting to configured address/port: 127.0.0.1:9001. :-|
+[232] I: Connected to client. :-)
+[232] -> <init xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" fileuri="file:///C:/domian/kalina/config/web.php" language="PHP" xdebug:language_version="7.1.28-dev" protocol_version="1.0" appid="232" idekey="15971"><engine version="2.7.0"><![CDATA[Xdebug]]></engine><author><![CDATA[Derick Rethans]]></author><url><![CDATA[https://xdebug.org]]></url><copyright><![CDATA[Copyright (c) 2002-2019 by Derick Rethans]]></copyright></init>
+[232]
+[232] <- feature_set -i 1 -n show_hidden -v 1
+[232] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="1" feature="show_hidden" success="1"></response>
+[232]
+[232] <- feature_set -i 2 -n max_depth -v 1
+[232] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="2" feature="max_depth" success="1"></response>
+[232]
+[232] <- feature_set -i 3 -n max_children -v 100
+[232] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="3" feature="max_children" success="1"></response>
+[232]
+[232] <- feature_set -i 4 -n extended_properties -v 1
+[232] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="4" feature="extended_properties" success="1"></response>
+[232]
+[232] <- status -i 5
+[232] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="status" transaction_id="5" status="starting" reason="ok"></response>
+[232]
+[232] <- step_into -i 6
+[232] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="step_into" transaction_id="6" status="break" reason="ok"><xdebug:message filename="file:///C:/domian/kalina/config/web.php" lineno="3"></xdebug:message></response>
+[232]
+[232] <- breakpoint_set -i 7 -t line -f file://C:/domian/kalina/controllers/SiteController.php -n 126
+[232] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="breakpoint_set" transaction_id="7" id="2320001"></response>
+[232]
+[232] <- breakpoint_set -i 8 -t line -f file://C:/domian/kalina/controllers/SiteController.php -n 64
+[232] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="breakpoint_set" transaction_id="8" id="2320002"></response>
+[232]
+[232] <- stack_get -i 9
+[232] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="stack_get" transaction_id="9"><stack where="{main}" level="0" type="file" filename="file:///C:/domian/kalina/config/web.php" lineno="3"></stack></response>
+[232]
+[232] <- run -i 10
+[232] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="run" transaction_id="10" status="stopping" reason="ok"></response>
+[232]
+[232] <- run -i 11
+[232] Log closed at 2019-03-27 10:32:19
+[232]
+[9872] Log opened at 2019-03-27 10:32:49
+[9872] I: Checking remote connect back address.
+[9872] I: Checking header 'HTTP_X_FORWARDED_FOR'.
+[9872] I: Checking header 'REMOTE_ADDR'.
+[9872] W: Remote address not found, connecting to configured address/port: 127.0.0.1:9001. :-|
+[9872] I: Connected to client. :-)
+[9872] -> <init xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" fileuri="file:///C:/domian/kalina/config/web.php" language="PHP" xdebug:language_version="7.1.28-dev" protocol_version="1.0" appid="9872" idekey="19326"><engine version="2.7.0"><![CDATA[Xdebug]]></engine><author><![CDATA[Derick Rethans]]></author><url><![CDATA[https://xdebug.org]]></url><copyright><![CDATA[Copyright (c) 2002-2019 by Derick Rethans]]></copyright></init>
+[9872]
+[9872] <- feature_set -i 1 -n show_hidden -v 1
+[9872] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="1" feature="show_hidden" success="1"></response>
+[9872]
+[9872] <- feature_set -i 2 -n max_depth -v 1
+[9872] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="2" feature="max_depth" success="1"></response>
+[9872]
+[9872] <- feature_set -i 3 -n max_children -v 100
+[9872] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="3" feature="max_children" success="1"></response>
+[9872]
+[9872] <- feature_set -i 4 -n extended_properties -v 1
+[9872] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="4" feature="extended_properties" success="1"></response>
+[9872]
+[9872] <- status -i 5
+[9872] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="status" transaction_id="5" status="starting" reason="ok"></response>
+[9872]
+[9872] <- step_into -i 6
+[9872] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="step_into" transaction_id="6" status="break" reason="ok"><xdebug:message filename="file:///C:/domian/kalina/config/web.php" lineno="3"></xdebug:message></response>
+[9872]
+[9872] <- breakpoint_set -i 7 -t line -f file://C:/domian/kalina/controllers/SiteController.php -n 126
+[9872] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="breakpoint_set" transaction_id="7" id="98720001"></response>
+[9872]
+[9872] <- breakpoint_set -i 8 -t line -f file://C:/domian/kalina/controllers/SiteController.php -n 64
+[9872] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="breakpoint_set" transaction_id="8" id="98720002"></response>
+[9872]
+[9872] <- stack_get -i 9
+[9872] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="stack_get" transaction_id="9"><stack where="{main}" level="0" type="file" filename="file:///C:/domian/kalina/config/web.php" lineno="3"></stack></response>
+[9872]
+[9872] <- run -i 10
+[9872] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="run" transaction_id="10" status="stopping" reason="ok"></response>
+[9872]
+[9872] <- run -i 11
+[9872] Log closed at 2019-03-27 10:32:49
+[9872]
+[7480] Log opened at 2019-03-27 10:34:11
+[7480] I: Checking remote connect back address.
+[7480] I: Checking header 'HTTP_X_FORWARDED_FOR'.
+[7480] I: Checking header 'REMOTE_ADDR'.
+[7480] W: Remote address not found, connecting to configured address/port: 127.0.0.1:9001. :-|
+[7480] I: Connected to client. :-)
+[7480] -> <init xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" fileuri="file:///C:/domian/kalina/config/web.php" language="PHP" xdebug:language_version="7.1.28-dev" protocol_version="1.0" appid="7480" idekey="PHPSTORM"><engine version="2.7.0"><![CDATA[Xdebug]]></engine><author><![CDATA[Derick Rethans]]></author><url><![CDATA[https://xdebug.org]]></url><copyright><![CDATA[Copyright (c) 2002-2019 by Derick Rethans]]></copyright></init>
+[7480]
+[7480] <- feature_set -i 1 -n show_hidden -v 1
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="1" feature="show_hidden" success="1"></response>
+[7480]
+[7480] <- feature_set -i 2 -n max_depth -v 1
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="2" feature="max_depth" success="1"></response>
+[7480]
+[7480] <- feature_set -i 3 -n max_children -v 100
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="3" feature="max_children" success="1"></response>
+[7480]
+[7480] <- feature_set -i 4 -n extended_properties -v 1
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="4" feature="extended_properties" success="1"></response>
+[7480]
+[7480] <- feature_set -i 5 -n notify_ok -v 1
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="5" feature="notify_ok" success="1"></response>
+[7480]
+[7480] <- stdout -i 6 -c 1
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="stdout" transaction_id="6" success="1"></response>
+[7480]
+[7480] <- status -i 7
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="status" transaction_id="7" status="starting" reason="ok"></response>
+[7480]
+[7480] <- step_into -i 8
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="step_into" transaction_id="8" status="break" reason="ok"><xdebug:message filename="file:///C:/domian/kalina/config/web.php" lineno="3"></xdebug:message></response>
+[7480]
+[7480] <- eval -i 9 -- aXNzZXQoJF9TRVJWRVJbJ1BIUF9JREVfQ09ORklHJ10p
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="eval" transaction_id="9"><property type="bool"><![CDATA[0]]></property></response>
+[7480]
+[7480] <- eval -i 10 -- aXNzZXQoJF9TRVJWRVJbJ1NFUlZFUl9OQU1FJ10p
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="eval" transaction_id="10"><property type="bool"><![CDATA[0]]></property></response>
+[7480]
+[7480] <- eval -i 11 -- aXNzZXQoJF9TRVJWRVJbJ1NTSF9DT05ORUNUSU9OJ10p
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="eval" transaction_id="11"><property type="bool"><![CDATA[0]]></property></response>
+[7480]
+[7480] <- eval -i 12 -- aXNzZXQoJF9TRVJWRVJbJ1NFUlZFUl9BRERSJ10p
+[7480] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="eval" transaction_id="12"><property type="bool"><![CDATA[0]]></property></response>
+[7480]
+[10476] Log opened at 2019-03-27 10:34:32
+[10476] I: Checking remote connect back address.
+[10476] I: Checking header 'HTTP_X_FORWARDED_FOR'.
+[10476] I: Checking header 'REMOTE_ADDR'.
+[10476] W: Remote address not found, connecting to configured address/port: 127.0.0.1:9001. :-|
+[10476] I: Connected to client. :-)
+[10476] -> <init xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" fileuri="file:///C:/domian/kalina/config/web.php" language="PHP" xdebug:language_version="7.1.28-dev" protocol_version="1.0" appid="10476" idekey="18232"><engine version="2.7.0"><![CDATA[Xdebug]]></engine><author><![CDATA[Derick Rethans]]></author><url><![CDATA[https://xdebug.org]]></url><copyright><![CDATA[Copyright (c) 2002-2019 by Derick Rethans]]></copyright></init>
+[10476]
+[10476] <- feature_set -i 1 -n show_hidden -v 1
+[10476] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="1" feature="show_hidden" success="1"></response>
+[10476]
+[10476] <- feature_set -i 2 -n max_depth -v 1
+[10476] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="2" feature="max_depth" success="1"></response>
+[10476]
+[10476] <- feature_set -i 3 -n max_children -v 100
+[10476] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="3" feature="max_children" success="1"></response>
+[10476]
+[10476] <- feature_set -i 4 -n extended_properties -v 1
+[10476] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="4" feature="extended_properties" success="1"></response>
+[10476]
+[10476] <- status -i 5
+[10476] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="status" transaction_id="5" status="starting" reason="ok"></response>
+[10476]
+[10476] <- step_into -i 6
+[10476] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="step_into" transaction_id="6" status="break" reason="ok"><xdebug:message filename="file:///C:/domian/kalina/config/web.php" lineno="3"></xdebug:message></response>
+[10476]
+[10476] <- breakpoint_set -i 7 -t line -f file://C:/domian/kalina/controllers/SiteController.php -n 126
+[10476] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="breakpoint_set" transaction_id="7" id="104760001"></response>
+[10476]
+[10476] <- breakpoint_set -i 8 -t line -f file://C:/domian/kalina/controllers/SiteController.php -n 64
+[10476] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="breakpoint_set" transaction_id="8" id="104760002"></response>
+[10476]
+[10476] <- stack_get -i 9
+[10476] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="stack_get" transaction_id="9"><stack where="{main}" level="0" type="file" filename="file:///C:/domian/kalina/config/web.php" lineno="3"></stack></response>
+[10476]
+[10476] <- run -i 10
+[10476] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="run" transaction_id="10" status="stopping" reason="ok"></response>
+[10476]
+[10476] <- run -i 11
+[10476] Log closed at 2019-03-27 10:34:32
+[10476]
+Log opened at 2019-03-27 10:37:22
+I: Connecting to configured address/port: 127.0.0.1:9001.
+I: Connected to client. :-)
+-> <init xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" fileuri="file:///C:/domian/kalina/config/web.php" language="PHP" xdebug:language_version="5.6.1-dev" protocol_version="1.0" appid="12084" idekey="14860"><engine version="2.4.0"><![CDATA[Xdebug]]></engine><author><![CDATA[Derick Rethans]]></author><url><![CDATA[http://xdebug.org]]></url><copyright><![CDATA[Copyright (c) 2002-2016 by Derick Rethans]]></copyright></init>
+
+<- feature_set -i 1 -n show_hidden -v 1
+-> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="1" feature="show_hidden" success="1"></response>
+
+<- feature_set -i 2 -n max_depth -v 1
+-> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="2" feature="max_depth" success="1"></response>
+
+<- feature_set -i 3 -n max_children -v 100
+-> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="3" feature="max_children" success="1"></response>
+
+<- feature_set -i 4 -n extended_properties -v 1
+-> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="4" status="starting" reason="ok"><error code="3"><message><![CDATA[invalid or missing options]]></message></error></response>
+
+<- status -i 5
+-> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="status" transaction_id="5" status="starting" reason="ok"></response>
+
+<- step_into -i 6
+-> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="step_into" transaction_id="6" status="break" reason="ok"><xdebug:message filename="file:///C:/domian/kalina/config/web.php" lineno="3"></xdebug:message></response>
+
+<- breakpoint_set -i 7 -t line -f file://C:/domian/kalina/controllers/SiteController.php -n 126
+-> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="breakpoint_set" transaction_id="7" id="120840001"></response>
+
+<- breakpoint_set -i 8 -t line -f file://C:/domian/kalina/controllers/SiteController.php -n 64
+-> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="breakpoint_set" transaction_id="8" id="120840002"></response>
+
+<- stack_get -i 9
+-> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="stack_get" transaction_id="9"><stack where="{main}" level="0" type="file" filename="file:///C:/domian/kalina/config/web.php" lineno="3"></stack></response>
+
+<- run -i 10
+-> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="run" transaction_id="10" status="stopping" reason="ok"></response>
+
+<- run -i 11
+Log closed at 2019-03-27 10:37:22
+
