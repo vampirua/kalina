@@ -1,12 +1,12 @@
 <?php
 return [
+    "admin" => [
+        "class" => "nullref\\fulladmin\\Module"    
+    ],
     "category" => [
         "class" => "nullref\\category\\Module"    
     ],
-    "admin" => [
-        "class" => "nullref\fulladmin\\Module",
-        "components" => [
-            "menuBuilder" => "app\\components\\MenuBuilder"        
-    ]    
+    "user" => [
+        "class" => "nullref\\fulladmin\\modules\\user\\Module"    
     ]
     ];
