@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
         'css/jquery-ui.css',
         'css/owl.carousel.min.css',
         'css/owl.theme.default.min.css',
+
         'css/aos.css',
         'css/style.css',
     ];

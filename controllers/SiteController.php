@@ -2,9 +2,15 @@
 
 namespace app\controllers;
 
+use app\common\RegistrationForm;
+use app\models\Catalog;
+use app\modules\product\models\Product;
+use app\modules\user\models\User;
+use app\modules\variant\models\Variant;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -86,6 +92,37 @@ class SiteController extends Controller
         ]);
     }
 
+
+    public function actionSingup()
+    {
+        if (!Yii::$app->user->isGuest) {
+
+            return $this->goHome();
+        }
+
+        $model = new RegistrationForm();
+
+        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
+
+            $user = new User();
+
+            $user->username = $model->username;
+            $user->auth_key = $model->password;
+            $user->status = 1;
+            $user->email = $model->email;
+            $user->phone = $model->phone;
+            $user->created_at = date('l jS \of F Y h:i:s A');
+            $user->updated_at = date('l jS \of F Y h:i:s A');
+            $user->password_hash = \Yii::$app->security->generatePasswordHash($model->password);
+            $user->save();
+            $this->redirect('index');
+
+        }
+        return $this->render('singup', compact('model'));
+
+    }
+
+
     /**
      * Logout action.
      *
@@ -128,22 +165,71 @@ class SiteController extends Controller
 
     public function actionCart()
     {
-        return $this->render('cart');
+        $model = Yii::$app->cart->getPositions();
+
+        return $this->render('cart', ['model' => $model]);
     }
 
     public function actionCheckout()
     {
         return $this->render('checkout');
     }
-    public function actionShop()
+
+    public function actionCatalog()
     {
-        return $this->render('shop');
+
+        $searchModel = new Catalog();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('catalog', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
-    public function actionShopsingle()
+
+    /**
+     * @param $id
+     * @return Response
+     * @throws NotFoundHttpException
+     */
+    public function actionSave()
     {
-        return $this->render('shop-single');
+        $id = Yii::$app->request->get('id');
+
+        $cart = Yii::$app->cart;
+        $model = Variant::find()->where(['id' => $id])->with('product')->one();
+        if ($model) {
+            $cart->put($model, 1);
+            return $this->redirect(['site/cart']);
+        }
+        throw new NotFoundHttpException();
     }
-    public function actionThankyou(){
-       return $this->render('thankyou');
+
+    public function actionDelete($id)
+    {
+        $model = Yii::$app->cart->getPositionById($id);
+
+        Yii::$app->cart->remove($model);
+        if (Yii::$app->cart->getIsEmpty()) {
+            return $this->redirect('index');
+
+        }else{
+            return $this->redirect('/site/cart');
+        }
+
+
+    }
+
+    public function actionSingle()
+    {
+        $id = Yii::$app->request->get('id');
+        $model = Product::find()->where(['id' => $id])->with('variants', 'variants.color', 'vendor')->one();
+
+        return $this->render('shop-single', ['model' => $model]);
+    }
+
+    public function actionThankyou()
+    {
+        return $this->render('thankyou');
     }
 }

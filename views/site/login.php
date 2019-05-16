@@ -7,41 +7,35 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Login';
+$this->title = 'Вхід';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container">
 
-    <p>Please fill out the following fields to login:</p>
+    <div class="site-login">
+        <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
+        <p>Будь ласка, заповніть наступні поля для входу</p>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+        <div class="row">
+            <div class="col-lg-5">
+                <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-        <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Логин') ?>
 
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
+                <?= $form->field($model, 'password')->passwordInput()->label('Пароль') ?>
 
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <?= $form->field($model, 'rememberMe')->checkbox()->label('Запамятати мене') ?>
+
+                <div class="form-group">
+                    <?= Html::submitButton('Войти', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+
+                </div>
+
+                <?php ActiveForm::end(); ?>
+                <?= Html::a('Регистрация', '/site/singup', ['class' => 'btn btn-primary', 'name' => 'singup-button']) ?>
             </div>
         </div>
-
-    <?php ActiveForm::end(); ?>
-
-    <div class="col-lg-offset-1" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
     </div>
+
 </div>

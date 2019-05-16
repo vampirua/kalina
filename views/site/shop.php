@@ -1,4 +1,5 @@
 <?php
+/* @var $model \app\modules\photoproduct\models\PhotoProduct */
 ?>
 <div class="bg-light py-3">
     <div class="container">
@@ -52,7 +53,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/cloth_1.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/cloth_1.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -65,7 +66,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/shoe_1.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/shoe_1.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -78,7 +79,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/cloth_2.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/cloth_2.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -92,7 +93,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/cloth_3.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/cloth_3.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -105,7 +106,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/shoe_1.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/shoe_1.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -118,7 +119,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/cloth_1.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/cloth_1.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -131,7 +132,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/shoe_1.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/shoe_1.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -144,7 +145,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/cloth_2.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/cloth_2.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -158,7 +159,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/cloth_3.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/cloth_3.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -171,7 +172,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/shoe_1.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/shoe_1.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -184,7 +185,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/cloth_1.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/cloth_1.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -198,7 +199,7 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="images/cloth_2.jpg" alt="Image placeholder"
+                                <a href="shop-single.html"><img src="/images/cloth_2.jpg" alt="Image placeholder"
                                                                 class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
@@ -301,7 +302,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
                             <a class="block-2-item" href="#">
                                 <figure class="image">
-                                    <img src="images/women.jpg" alt="" class="img-fluid">
+                                    <img src="/images/women.jpg" alt="" class="img-fluid">
                                 </figure>
                                 <div class="text">
                                     <span class="text-uppercase">Collections</span>
@@ -312,7 +313,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
                             <a class="block-2-item" href="#">
                                 <figure class="image">
-                                    <img src="images/children.jpg" alt="" class="img-fluid">
+                                    <img src="/images/children.jpg" alt="" class="img-fluid">
                                 </figure>
                                 <div class="text">
                                     <span class="text-uppercase">Collections</span>
@@ -323,7 +324,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
                             <a class="block-2-item" href="#">
                                 <figure class="image">
-                                    <img src="images/men.jpg" alt="" class="img-fluid">
+                                    <img src="/images/men.jpg" alt="" class="img-fluid">
                                 </figure>
                                 <div class="text">
                                     <span class="text-uppercase">Collections</span>

@@ -81,7 +81,6 @@ class m190326_101700_db_kalina extends Migration
             'material' => $this->string(),
             'description' => $this->text(),
             'category_id' => $this->integer(),
-            'photo_product_id' => $this->integer(),
             'status_product_id' => $this->integer(),
         ], $tableOptions);
 
@@ -92,6 +91,7 @@ class m190326_101700_db_kalina extends Migration
 
         $this->createTable('{{%photo_product}}', [
             'id' => $this->primaryKey(),
+            'product_id' => $this->integer(),
             'img' => $this->string(),
         ]);
 
@@ -150,9 +150,9 @@ class m190326_101700_db_kalina extends Migration
 
         $this->addForeignKey(
             'fk-product-photo-product',
-            '{{%product}}',
-            'photo_product_id',
             '{{%photo_product}}',
+            'product_id',
+            '{{%product}}',
             'id'
         );
 

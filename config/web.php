@@ -12,9 +12,26 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
     ],
+    'controllerMap' => [
+        'elfinder' => [
+            'class' => 'mihaildev\elfinder\PathController',
+            'access' => ['?'],
+            'root' => [
+                'path' => 'files',
+                'name' => 'files'
+            ],
+            'watermark' => [
+                'source'         => __DIR__.'/logo.png', // Path to Water mark image
+                'marginRight'    => 5,          // Margin right pixel
+                'marginBottom'   => 5,          // Margin bottom pixel
+                'quality'        => 95,         // JPEG image save quality
+                'transparency'   => 70,         // Water mark image transparency ( other than PNG )
+                'targetType'     => IMG_GIF|IMG_JPG|IMG_PNG|IMG_WBMP, // Target image formats ( bit-field )
+                'targetMinPixel' => 200         // Target image minimum pixel size
+            ]
+        ]
+    ],
     'components' => [
-
-
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'wk24bNwN08h_XdkIILFlKq3T2HRkiRu7',
@@ -46,13 +63,11 @@ $config = [
             ],
         ],
         'db' => $db,
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
         'i18n' => [
@@ -61,6 +76,11 @@ $config = [
                 'admin' => ['class' => 'nullref\core\components\i18n\PhpMessageSource'],
             ],
         ],
+        'cart' => [
+            'class' => 'yz\shoppingcart\ShoppingCart',
+            'cartId' => 'my_application_cart',
+        ]
+
     ],
     'params' => $params,
     'modules' => $modules,
