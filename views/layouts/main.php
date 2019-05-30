@@ -51,7 +51,7 @@ AppAsset::register($this);
                                 <li>
                                     <a href="/site/cart" class="site-cart">
                                         <span class="icon icon-shopping_cart"></span>
-                                        <span class="count">2</span>
+                                        <span class="count"><?=Yii::$app->cart->getCount();?></span>
                                     </a>
                                 </li>
                                 <li class="d-inline-block d-md-none ml-md-0">

@@ -44,6 +44,7 @@ class SiteController extends Controller
         ];
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -172,7 +173,9 @@ class SiteController extends Controller
 
     public function actionCheckout()
     {
-        return $this->render('checkout');
+        $model = Yii::$app->cart->getPositions();
+
+        return $this->render('/site/checkout', ['model' => $model]);
     }
 
     public function actionCatalog()
@@ -213,7 +216,7 @@ class SiteController extends Controller
         if (Yii::$app->cart->getIsEmpty()) {
             return $this->redirect('index');
 
-        }else{
+        } else {
             return $this->redirect('/site/cart');
         }
 
@@ -232,4 +235,5 @@ class SiteController extends Controller
     {
         return $this->render('thankyou');
     }
+
 }
