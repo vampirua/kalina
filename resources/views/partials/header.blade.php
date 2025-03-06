@@ -3,9 +3,9 @@
         <a href="{{ route('home') }}" class="navbar-brand">Логотип</a>
         <nav>
             <ul class="nav">
-                <li class="nav-item"><a href="#" class="nav-link text-white">Категорія 1</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">Категорія 2</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">Категорія 3</a></li>
+                @foreach($categories as $category)
+                <li class="nav-item"><a href="/category/{{$category->slug}}" class="nav-link text-white">{{$category->name}}</a></li>
+                @endforeach
             </ul>
         </nav>
         <div>
