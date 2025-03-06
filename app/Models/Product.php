@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'sku', 'name', 'slug', 'type_id', 'unit_id', 'country_id', 'material_id', 'age_group_id',
+        'sku', 'name', 'slug', 'subcategory_id', 'type_id', 'unit_id', 'country_id', 'material_id', 'age_group_id',
         'description', 'image', 'status'
     ];
 
@@ -43,4 +43,14 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class);
     }
+    public function subcategory()
+    {
+        return $this->belongsTo(Subcategory::class);
+    }
+
+    public function category()
+    {
+        return $this->hasOneThrough(Category::class, Subcategory::class, 'id', 'id', 'subcategory_id', 'category_id');
+    }
+
 }

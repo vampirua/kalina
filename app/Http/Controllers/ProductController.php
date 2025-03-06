@@ -12,7 +12,7 @@ class ProductController extends Controller
         $product = Product::where('slug', $slug)->with('variants')->firstOrFail();
 
         // Отримуємо схожі продукти з тієї ж категорії
-        $similarProducts = Product::where('category_id', $product->category_id)
+        $similarProducts = Product::where('subcategory_id', $product->subcategory_id)
             ->where('id', '!=', $product->id)
             ->take(5)  // Наприклад, беремо 5 схожих товарів
             ->get();

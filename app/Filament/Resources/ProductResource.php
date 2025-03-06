@@ -52,6 +52,17 @@ class ProductResource extends Resource
                 ->label('Статус')
                 ->default(true)
                 ->required(),
+            Forms\Components\Select::make('subcategory_id')
+                ->label('Підкатегорія')
+                ->relationship('subcategory', 'name', function ($query) {
+                    $query->with('category');
+                })
+                ->getOptionLabelUsing(function ($value) {
+                    return $value->name . ' (' . $value->category->name . ')';
+                })
+                ->preload()
+                ->searchable()
+                ->required(),
         ]);
     }
 
@@ -68,6 +79,8 @@ class ProductResource extends Resource
             Tables\Columns\TextColumn::make('ageGroup.name')->label('Вікова доступ.')->sortable(),
             Tables\Columns\ImageColumn::make('image')->label('картинка')->sortable(),
             Tables\Columns\BooleanColumn::make('status')->label('Статус')->sortable(),
+            Tables\Columns\TextColumn::make('subcategory.category.name')->label('Категорія'),
+            Tables\Columns\TextColumn::make('subcategory.name')->label('Підкатегорія'),
         ]);
     }
 
