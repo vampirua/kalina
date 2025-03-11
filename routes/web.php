@@ -21,12 +21,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
-Route::get('/about', function () {
-    return view('about', ['child' => 'About Us']);
-})->name('about');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(\App\Http\Middleware\ShareCategories::class);
 
 Route::get('/contact', function () {
     return view('contact', ['child' => 'Contact Us']);
@@ -38,6 +33,10 @@ Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact
 
 Route::get('product/{slug}', [ProductController::class, 'show'])->name('product.show');
 
-
 Route::get('/category/{category:slug}', [CategoryController::class, 'show'])->name('categories.show');
+
+Route::get('/about-us', function () {
+    return view('about-us');
+})->middleware(\App\Http\Middleware\ShareCategories::class);
+
 
