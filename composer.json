@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "blade-ui-kit/blade-icons": "^1.7",
+        "openspout/openspout":"v4.28.5",
         "filament/filament": "^3.2",
         "filament/notifications": "^3.2",
         "laravel/framework": "^11.31",

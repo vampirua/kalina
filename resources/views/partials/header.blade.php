@@ -1,6 +1,7 @@
 <header class="bg-dark text-white py-3">
     <div class="container d-flex justify-content-between align-items-center">
         <a href="{{ route('home') }}" class="navbar-brand">Логотип</a>
+
         <nav>
             <ul class="nav">
                 @foreach($categories as $category)

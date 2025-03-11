@@ -10,7 +10,7 @@
 </head>
 <body>
 
-@include('partials.header',['categories'=>$categories])
+@include('partials.header')
 @if(request()->routeIs('home'))
 <div class="slider-container">
     @include('partials.slider')
