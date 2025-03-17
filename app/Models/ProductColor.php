@@ -9,10 +9,11 @@ class ProductColor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'gradient'];
 
     public function variants()
     {
         return $this->hasMany(ProductVariant::class);
     }
 }
+

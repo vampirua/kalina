@@ -1,88 +1,220 @@
 @extends('layouts.app')
 
+@section('title', 'Сторінка продукту')
+
 @section('content')
-    <div class="container mt-5">
-        <div class="row">
-            <!-- Ліва частина: Слайдер з фото -->
-            <div class="col-md-6">
-                <div id="productImagesCarousel" class="carousel slide product-carousel" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        @foreach($product->variants as $variant)
-                            @if($variant->images && is_array($variant->images) && count($variant->images) > 0)
-                                @foreach($variant->images as $index => $image)
-                                    <div class="carousel-item @if($index == 0) active @endif">
-                                        <img src="{{ asset('storage/' . $image) }}" class="d-block w-100 product-carousel-img" alt="{{ $product->name }}">
-                                    </div>
-                                @endforeach
-                            @else
-                                <div class="carousel-item active">
-                                    <img src="{{ asset('storage/default-image.png') }}" class="d-block w-100 product-carousel-img" alt="Default Image">
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#productImagesCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#productImagesCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
 
-            <!-- Права частина: Опис продукту -->
-            <div class="col-md-6">
-                <h2>{{ $product->name }}</h2>
-                <p class="mt-3">{{ $product->description }}</p>
-                <h5>Ціна: {{ $product->price }} грн</h5>
-
-                <!-- Варіанти продукту -->
-                @if($product->variants->isNotEmpty())
-                    <h6 class="mt-4">Варіанти:</h6>
-                    <ul>
-                        @foreach($product->variants as $variant)
-                            <li>{{ $variant->size->name }} / {{ $variant->color->name }} — {{ $variant->price }} грн</li>
-                        @endforeach
-                    </ul>
-                @endif
-
-                <!-- Кнопка додавання в кошик -->
-                <div class="mt-4">
-                    <button class="btn btn-primary">Додати в кошик</button>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img id="product-image" src="{{ asset($product->image) }}" alt="{{ $product->name }}"
+                 class="img-fluid rounded">
         </div>
 
-        <!-- Блок схожих товарів -->
-        <div class="container mt-5">
-            <h3 class="text-center mb-4">Схожі товари</h3>
-            <div id="similarProductsCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    @foreach($similarProducts as $index => $product)
-                        <div class="carousel-item @if($index == 0) active @endif">
-                            <div class="card">
-                                <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $product->name }}</h5>
-                                    <p class="card-text">{{ $product->description }}</p>
-                                    <h6>Ціна: {{ $product->price }} грн</h6>
-                                    <a href="{{ route('product.show', $product->slug) }}" class="btn btn-outline-primary">Детальніше</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+        <div class="col-md-6">
+            <h2>{{ $product->name }}</h2>
+            <p class="text-muted">{{ $product->description }}</p>
+            <h4 class="mt-3">Ціна: <span id="product-price">{{ $product->variants->first()->price }}</span> грн</h4>
+
+            <h6 class="mt-4">Оберіть колір:</h6>
+            <div class="d-flex gap-2" id="color-options">
+                @foreach($product->variants->groupBy('color_id') as $colorId => $variants)
+                    @php
+                        $color = $variants->first()->color;
+                    @endphp
+                    <button
+                        class="btn color-btn"
+                        style="background: {{ $color->gradient ?? '#ccc' }}; width: 40px; height: 40px; border: 1px solid black; cursor: pointer;"
+                        data-color-id="{{ $color->id }}"
+                        title="{{ $color->name }}">
+                    </button>
+                @endforeach
+            </div>
+
+            <h6 class="mt-4">Оберіть розмір:</h6>
+            <div class="d-flex gap-2" id="size-options">
+                @foreach($product->variants->groupBy('size_id') as $sizeId => $variants)
+                    @php
+                        $size = $variants->first()->size;
+                    @endphp
+                    <button
+                        class="btn size-btn btn-outline-dark"
+                        style="padding: 5px 15px; cursor: pointer;"
+                        data-size-id="{{ $sizeId }}">
+                        {{ $size->name }}
+                    </button>
+                @endforeach
+            </div>
+
+            <div class="product-variant">
+                <!-- Загальна ціна -->
+                <div class="variant-details">
+                        <span class="variant-price" id="variant-price">
+                            ${{ $product->price }}
+                        </span>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#similarProductsCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#similarProductsCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+
+                <div class="quantity-container">
+                    <label for="quantity-input">Кількість</label>
+
+                    <!-- Контейнер для кнопок + і - та поля введення -->
+                    <div class="quantity-control">
+                        <button type="button" id="decrease" class="quantity-btn">-</button>
+                        <input type="number" id="quantity-input" value="1" min="1" class="quantity-input">
+                        <button type="button" id="increase" class="quantity-btn">+</button>
+                    </div>
+                </div>
+
+                <!-- Виведення загальної суми -->
+                <br>
+                <h4 class="mt-3"> Загальна сума: <span id="total-price"> ${{ $product->price }} </span></h4>
+
+                <button class="btn btn-primary mt-4" id="add-to-cart" disabled>Додати в кошик</button>
             </div>
         </div>
     </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let selectedColor = null;
+            let selectedSize = null;
+            let selectedQuantity = 1;  // Початкова кількість
+            const quantityInput = document.getElementById('quantity-input');
+            const increaseButton = document.getElementById('increase');
+            const decreaseButton = document.getElementById('decrease');
+
+            // Оновлює ціну та доступність кнопки "Додати до кошика"
+            const updatePrice = () => {
+                const selectedQuantity = parseInt(quantityInput.value);
+                if (selectedColor && selectedSize) {
+                    fetch(`/get-variant-price?product_id={{ $product->id }}&color_id=${selectedColor}&size_id=${selectedSize}&quantity=${selectedQuantity}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.price) {
+                                const totalPrice = data.price * selectedQuantity;
+                                document.getElementById('total-price').textContent = `${totalPrice.toFixed(2)} грн`;
+                                document.getElementById('product-price').textContent = data.price;
+                            }
+                        })
+                        .catch(error => console.error('Error fetching price:', error));
+                }
+            };
+
+            // Фільтрація доступних кольорів в залежності від вибраного розміру
+            const filterColors = (sizeId) => {
+                fetch(`/get-available-colors?product_id={{ $product->id }}&size_id=${sizeId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelectorAll('.color-btn').forEach(btn => {
+                            let available = data.colors.includes(parseInt(btn.dataset.colorId));
+                            btn.disabled = !available;
+                            btn.style.opacity = available ? "1" : "0.5";
+                            btn.style.cursor = available ? "pointer" : "not-allowed";
+                        });
+                    });
+            };
+
+            // Фільтрація доступних розмірів в залежності від вибраного кольору
+            const filterSizes = (colorId) => {
+                fetch(`/get-available-sizes?product_id={{ $product->id }}&color_id=${colorId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelectorAll('.size-btn').forEach(btn => {
+                            let availableSizes = Object.values(data.sizes);
+                            let available = availableSizes.includes(parseInt(btn.dataset.sizeId));
+
+                            btn.disabled = !available;
+                            btn.style.opacity = available ? "1" : "0.5";
+                            btn.style.cursor = available ? "pointer" : "not-allowed";
+
+                            if (available) {
+                                btn.classList.remove("disabled");
+                            } else {
+                                btn.classList.add("disabled");
+                            }
+                        });
+                    });
+            };
+
+            // Обробка вибору кольору
+            document.querySelectorAll('.color-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    if (this.hasAttribute('disabled')) return;
+
+                    document.querySelectorAll('.color-btn').forEach(btn => {
+                        btn.style.border = "1px solid black";
+                        btn.style.boxShadow = "none";
+                        btn.style.opacity = "1";
+                    });
+
+                    // Підсвічування вибраного кольору
+                    this.style.border = "3px solid blue";
+                    this.style.boxShadow = "0px 0px 10px rgba(0, 0, 255, 0.5)";
+                    this.style.opacity = "0.8";
+
+                    selectedColor = this.dataset.colorId;
+                    updatePrice();
+                    filterSizes(selectedColor); // Фільтруємо доступні розміри для обраного кольору
+                });
+            });
+
+            // Обробка вибору розміру
+            document.querySelectorAll('.size-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    if (this.hasAttribute('disabled')) return;
+
+                    document.querySelectorAll('.size-btn').forEach(btn => {
+                        btn.classList.remove("btn-primary");
+                        btn.classList.add("btn-outline-dark");
+                    });
+
+                    // Підсвічування вибраного розміру
+                    this.classList.remove("btn-outline-dark");
+                    this.classList.add("btn-primary");
+
+                    selectedSize = this.dataset.sizeId;
+                    updatePrice();
+                    filterColors(selectedSize); // Фільтруємо доступні кольори для обраного розміру
+                });
+            });
+
+            // Обробка зміни кількості товару
+            document.getElementById('quantity-input').addEventListener('input', function () {
+                selectedQuantity = parseInt(this.value);
+                if (selectedQuantity < 1) {
+                    selectedQuantity = 1;  // Мінімум 1
+                    this.value = 1;
+                }
+                updatePrice();  // Оновлюємо ціну в залежності від кількості
+            });
+
+            increaseButton.addEventListener('click', function () {
+                let quantity = parseInt(quantityInput.value);
+                quantity++;
+                quantityInput.value = quantity;
+                updatePrice(); // Оновлюємо ціну при зміні кількості
+            });
+
+            // Зменшення кількості
+            decreaseButton.addEventListener('click', function () {
+                let quantity = parseInt(quantityInput.value);
+                if (quantity > 1) {  // Мінімальна кількість 1
+                    quantity--;
+                    quantityInput.value = quantity;
+                    updatePrice(); // Оновлюємо ціну при зміні кількості
+                }
+            });
+
+            // Оновлення ціни при введенні вручну
+            quantityInput.addEventListener('input', function () {
+                let quantity = parseInt(this.value);
+                if (quantity < 1) quantity = 1;  // Мінімум 1
+                this.value = quantity;
+                updatePrice(); // Оновлюємо ціну при зміні кількості
+            });
+        });
+
+
+    </script>
 @endsection

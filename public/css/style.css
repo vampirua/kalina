@@ -8,7 +8,7 @@ header .nav-link:hover {
 
 .popular-products .slider-container {
     position: relative;
-    width: 100%;
+    width: 80%;
     height: 100vh; /* Висота слайдера */
     overflow: hidden;
 }
@@ -45,6 +45,86 @@ header .nav-link:hover {
     height: 200px;
     object-fit: cover;
 }
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #343a40; /* Темний фон (такий самий, як bg-dark) */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Додає тінь */
+}
+
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #343a40;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.sticky-header .container{
+    padding: 0;
+}
+body {
+    padding-top: 60px; /* Щоб контент не перекривався хедером */
+}
+
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: white;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Збільшується при наведенні */
+}
+
+.quantity-btn:active {
+    background-color: #004085;
+    transform: scale(0.95); /* Зменшення при натисканні */
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.quantity-input:focus {
+    border-color: #0056b3; /* Зміна кольору при фокусуванні */
+}
+
+.quantity-control .quantity-input {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+
 
 
 

@@ -17,9 +17,7 @@
 </div>
 @endif
 
-<div class="container my-5">
-    @yield('content')
-</div>
+@yield('content')
 
 @include('partials.footer')
 

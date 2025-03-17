@@ -3,6 +3,8 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Models\ProductVariant;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Http\Controllers\CategoryController;
@@ -39,4 +41,15 @@ Route::get('/about-us', function () {
     return view('about-us');
 })->middleware(\App\Http\Middleware\ShareCategories::class);
 
+Route::get('/get-variant-price', function (Request $request) {
+    $variant = ProductVariant::where('product_id', $request->product_id)
+        ->where('color_id', $request->color_id)
+        ->where('size_id', $request->size_id)
+        ->first();
+
+    return response()->json(['price' => $variant ? $variant->price : '---']);
+});
+
+Route::get('/get-available-colors', [ProductController::class, 'getAvailableColors']);
+Route::get('/get-available-sizes', [ProductController::class, 'getAvailableSizes']);
 

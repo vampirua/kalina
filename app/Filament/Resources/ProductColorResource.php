@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 
 use App\Models\ProductColor;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Resources\Resource;
 use Filament\Forms;
 use Filament\Tables;
@@ -21,6 +22,9 @@ class ProductColorResource extends Resource
     {
         return $form->schema([
             TextInput::make('name')->label('Назва'),
+            ColorPicker::make('gradient')
+                ->label('Градієнт')
+                ->helperText('Введіть CSS градієнт (наприклад, `linear-gradient(to right, #ff7e5f, #feb47b)`)'),
         ]);
     }
 
@@ -30,6 +34,7 @@ class ProductColorResource extends Resource
             ->columns([
                 TextColumn::make('name')->label('Назва'),
             ]);
+
     }
 
     public static function getPages(): array
