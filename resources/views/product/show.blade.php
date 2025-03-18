@@ -4,11 +4,41 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row container">
         <div class="col-md-6">
-            <img id="product-image" src="{{ asset($product->image) }}" alt="{{ $product->name }}"
-                 class="img-fluid rounded">
+            <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @if(!empty($product->variants) && $product->variants->isNotEmpty())
+                        @php $first = true; @endphp
+                        @foreach($product->variants as $variant)
+                            @php
+                                $image = $variant->images[0] ?? 'default-image.png';
+                            @endphp
+                            <div class="carousel-item {{ $first ? 'active' : '' }}">
+                                <img src="{{ asset('storage/' . $image) }}" class="d-block w-100" alt="{{ $product->name }}">
+                            </div>
+                            @php $first = false; @endphp
+                        @endforeach
+                    @else
+                        <div class="carousel-item active">
+                            <img src="{{ asset('storage/default-image.png') }}" class="d-block w-100" alt="No Image">
+                        </div>
+                    @endif
+                </div>
+
+                @if(!empty($product->variants) && $product->variants->count() > 1)
+                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                @endif
+            </div>
         </div>
+
 
         <div class="col-md-6">
             <h2>{{ $product->name }}</h2>
@@ -49,14 +79,14 @@
                 <!-- Загальна ціна -->
                 <div class="variant-details">
                         <span class="variant-price" id="variant-price">
-                            ${{ $product->price }}
+                            {{ $product->price }}
                         </span>
                 </div>
 
+                <br>
                 <div class="quantity-container">
                     <label for="quantity-input">Кількість</label>
 
-                    <!-- Контейнер для кнопок + і - та поля введення -->
                     <div class="quantity-control">
                         <button type="button" id="decrease" class="quantity-btn">-</button>
                         <input type="number" id="quantity-input" value="1" min="1" class="quantity-input">
@@ -64,11 +94,10 @@
                     </div>
                 </div>
 
-                <!-- Виведення загальної суми -->
                 <br>
-                <h4 class="mt-3"> Загальна сума: <span id="total-price"> ${{ $product->price }} </span></h4>
+                <h4 class="mt-3"> Загальна сума: <span id="total-price">{{ $product->price }} </span></h4>
 
-                <button class="btn btn-primary mt-4" id="add-to-cart" disabled>Додати в кошик</button>
+                <button class="btn btn-primary mt-4" id="add-to-cart" disabled>Замовити в один клік</button>
             </div>
         </div>
     </div>
