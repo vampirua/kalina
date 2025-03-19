@@ -3,6 +3,7 @@
 @section('title', 'Сторінка продукту')
 
 @section('content')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <div class="row container">
         <div class="col-md-6">
@@ -97,13 +98,72 @@
                 <br>
                 <h4 class="mt-3"> Загальна сума: <span id="total-price">{{ $product->price }} </span></h4>
 
-                <button class="btn btn-primary mt-4" id="add-to-cart" disabled>Замовити в один клік</button>
+                <button class="btn btn-primary mt-4" id="add-to-cart">Замовити в один клік</button>
             </div>
         </div>
     </div>
 
 
+    <!-- Модальне вікно -->
+    <div class="modal fade" id="quickOrderModal" tabindex="-1" aria-labelledby="quickOrderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quickOrderModalLabel">Швидке замовлення</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="quickOrderForm">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="customerName" class="form-label">Ім'я</label>
+                            <input type="text" class="form-control" id="customerName" name="customer_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerPhone" class="form-label">Телефон</label>
+                            <input type="tel" class="form-control" id="customerPhone" name="customer_phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerEmail" class="form-label">Email (необов'язково)</label>
+                            <input type="email" class="form-control" id="customerEmail" name="customer_email">
+                        </div>
+                        <button type="submit" class="btn btn-success">Підтвердити замовлення</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+    <script>
+        document.getElementById('add-to-cart').addEventListener('click', function () {
+            let modal = new bootstrap.Modal(document.getElementById('quickOrderModal'));
+            modal.show();
+        });
+
+        document.getElementById('quickOrderForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let formData = new FormData(this);
+
+            fetch("{{ route('quick.order') }}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Ваше замовлення прийнято!");
+                        document.getElementById('quickOrderModal').querySelector('.btn-close').click();
+                    } else {
+                        alert("Помилка: " + data.message);
+                    }
+                })
+                .catch(error => console.error('Помилка:', error));
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             let selectedColor = null;

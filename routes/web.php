@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -53,3 +54,4 @@ Route::get('/get-variant-price', function (Request $request) {
 Route::get('/get-available-colors', [ProductController::class, 'getAvailableColors']);
 Route::get('/get-available-sizes', [ProductController::class, 'getAvailableSizes']);
 
+Route::post('/order/quick-order', [OrderController::class, 'quickOrder'])->name('quick.order');
