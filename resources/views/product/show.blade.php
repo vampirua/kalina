@@ -7,6 +7,7 @@
 
     <div class="row container">
         <div class="col-md-6">
+            <input type="hidden" id="product-id" value="{{ $product->id }}">
             <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     @if(!empty($product->variants) && $product->variants->isNotEmpty())
@@ -99,6 +100,9 @@
                 <h4 class="mt-3"> Загальна сума: <span id="total-price">{{ $product->price }} </span></h4>
 
                 <button class="btn btn-primary mt-4" id="add-to-cart">Замовити в один клік</button>
+
+
+                <button class="btn btn-success mt-4" id="add-to-cart-btn">Додати в кошик</button>
             </div>
         </div>
     </div>
@@ -231,13 +235,16 @@
                 button.addEventListener('click', function () {
                     if (this.hasAttribute('disabled')) return;
 
+                    // Видаляємо клас active та скидаємо стилі у всіх кнопок кольору
                     document.querySelectorAll('.color-btn').forEach(btn => {
+                        btn.classList.remove("active"); // Видаляємо active
                         btn.style.border = "1px solid black";
                         btn.style.boxShadow = "none";
                         btn.style.opacity = "1";
                     });
 
-                    // Підсвічування вибраного кольору
+                    // Додаємо клас active та стилі до вибраного кольору
+                    this.classList.add("active");
                     this.style.border = "3px solid blue";
                     this.style.boxShadow = "0px 0px 10px rgba(0, 0, 255, 0.5)";
                     this.style.opacity = "0.8";
@@ -254,10 +261,13 @@
                     if (this.hasAttribute('disabled')) return;
 
                     document.querySelectorAll('.size-btn').forEach(btn => {
+                        btn.classList.remove("active"); // Видаляємо active
                         btn.classList.remove("btn-primary");
                         btn.classList.add("btn-outline-dark");
                     });
 
+                    // Додаємо клас active та стилі до вибраного кольору
+                    this.classList.add("active");
                     // Підсвічування вибраного розміру
                     this.classList.remove("btn-outline-dark");
                     this.classList.add("btn-primary");

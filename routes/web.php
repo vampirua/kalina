@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -55,3 +56,12 @@ Route::get('/get-available-colors', [ProductController::class, 'getAvailableColo
 Route::get('/get-available-sizes', [ProductController::class, 'getAvailableSizes']);
 
 Route::post('/order/quick-order', [OrderController::class, 'quickOrder'])->name('quick.order');
+
+
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware(\App\Http\Middleware\ShareCategories::class);;
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::delete('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+
