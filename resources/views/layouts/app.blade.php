@@ -6,19 +6,24 @@
     <title>@yield('title', 'Головна')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     @stack('styles')
 </head>
 <body>
 
 @include('partials.header')
+<div class="container">
 @if(request()->routeIs('home'))
 <div class="slider-container">
     @include('partials.slider')
 </div>
 @endif
 
-@yield('content')
 
+@yield('content')
+    <br>
+    @include('partials.info')
+</div>
 @include('partials.footer')
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -191,18 +191,65 @@ body {
     background-color: #d32f2f;
 }
 
+.info-box-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.3s;
+    height: 100%;
+}
 
 
+.info-box i {
+    margin-bottom: 15px;
+}
+
+
+.info-box p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
 
 
 @media (max-width: 768px) {
+    .info-box .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .info-box .col-md-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.info-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
     .carousel-item {
-        width: 50%; /* На маленьких екранах показуємо по 2 товари */
+        width: 50%;
     }
 }
 
 @media (max-width: 480px) {
     .carousel-item {
-        width: 100%; /* На дуже малих екранах показуємо один товар */
+        width: 100%;
     }
 }
